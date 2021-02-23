@@ -9,6 +9,8 @@ namespace CurrencyCalculatorApi
     using Microsoft.OpenApi.Models;
 
     using CurrencyCalculatorApi.Data;
+    using CurrencyCalculatorApi.Common;
+    using CurrencyCalculatorApi.Services;
 
     public class Startup
     {
@@ -31,6 +33,13 @@ namespace CurrencyCalculatorApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CurrencyCalculatorApi", Version = "v1" });
             });
+
+            services.AddHttpClient();
+            services.Configure<FixerSettings>(this.Configuration.GetSection("FixerSettings"));
+
+            // Application Services
+            services.AddTransient<IFixerService, FixerService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
