@@ -1,5 +1,7 @@
 namespace CurrencyCalculatorApi
 {
+    using System;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -11,6 +13,9 @@ namespace CurrencyCalculatorApi
     using CurrencyCalculatorApi.Data;
     using CurrencyCalculatorApi.Common;
     using CurrencyCalculatorApi.Services;
+
+    using Hangfire;
+    using Hangfire.MemoryStorage;
 
     public class Startup
     {
@@ -36,16 +41,30 @@ namespace CurrencyCalculatorApi
 
             services.AddHttpClient();
 
+            // Hangfire Library for Scheduled tasks
+            services.AddHangfire(config => 
+                config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                    .UseSimpleAssemblyNameTypeSerializer()
+                    .UseDefaultTypeSerializer()
+                    .UseMemoryStorage());
+            services.AddHangfireServer();
+
             // Application Services
             services.AddTransient<IFixerService, FixerService>();
             services.AddTransient<ICalculatorService, CalculatorService>();
             services.AddTransient<IExchangeService, ExchangeService>();
             services.AddTransient<IDatabaseService, DatabaseService>();
+            services.AddTransient<IDailyTasksService, DailyTasksService>();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app, 
+            IWebHostEnvironment env,
+            IBackgroundJobClient backgroundJobClient,
+            IRecurringJobManager recurringJobManager,
+            IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -64,6 +83,16 @@ namespace CurrencyCalculatorApi
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHangfireDashboard();
+            // Run the task on start
+            backgroundJobClient.Enqueue(() => serviceProvider.GetService<IDailyTasksService>().StoreLatestExchangeRateAsync());
+
+            // Run the task daily
+            recurringJobManager.AddOrUpdate(
+                "Daily Exchange Rates",
+                () => serviceProvider.GetService<IDailyTasksService>().StoreLatestExchangeRateAsync(),
+                Cron.Daily);
         }
     }
 }
