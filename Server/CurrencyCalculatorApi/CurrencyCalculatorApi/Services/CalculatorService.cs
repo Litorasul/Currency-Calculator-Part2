@@ -3,6 +3,10 @@
     using CurrencyCalculatorApi.Dtos;
     public class CalculatorService : ICalculatorService
     {
+        public CalculatorService()
+        {
+            
+        }
         public decimal ConvertToEuro( string currencyCode, decimal amount, FixerExchangeRateDto rate)
         {
             if (currencyCode == "EUR")

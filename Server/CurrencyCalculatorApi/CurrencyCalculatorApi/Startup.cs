@@ -35,7 +35,6 @@ namespace CurrencyCalculatorApi
             });
 
             services.AddHttpClient();
-            services.Configure<FixerSettings>(this.Configuration.GetSection("FixerSettings"));
 
             // Application Services
             services.AddTransient<IFixerService, FixerService>();
