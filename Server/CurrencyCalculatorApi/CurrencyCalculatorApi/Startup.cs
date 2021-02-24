@@ -39,6 +39,8 @@ namespace CurrencyCalculatorApi
 
             // Application Services
             services.AddTransient<IFixerService, FixerService>();
+            services.AddTransient<ICalculatorService, CalculatorService>();
+            services.AddTransient<IExchangeService, ExchangeService>();
 
         }
 
