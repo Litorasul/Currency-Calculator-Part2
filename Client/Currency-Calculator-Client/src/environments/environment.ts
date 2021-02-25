@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiBaseUrl: 'https://localhost:44328/api/',
+  apiCurrencies: 'Currencies',
+  apiExchange: 'Exchange/',
+  apiLatest: 'latest?',
+  apiHistorical: 'historical?',
+  apiFrom: 'from=',
+  apiTo: '&to=',
+  apiAmmount: '&amount=',
+  apiDate: '&date=',
+  apiExchangeRate: 'ExchangeRates?',
+  apiCurrencyCode: 'currencyCode='
+
+
 };
 
 /*
