@@ -1,4 +1,6 @@
-﻿namespace CurrencyCalculatorApi.Controllers
+﻿using CurrencyCalculatorApi.ViewModels;
+
+namespace CurrencyCalculatorApi.Controllers
 {
     using System.Threading.Tasks;
     using System.Collections.Generic;
@@ -19,15 +21,25 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult<Dictionary<string, string>>> GetAvailableCurrencies()
+        public async Task<ActionResult<List<CurrenciesViewModel>>> GetAvailableCurrencies()
         {
             var currencies = await this.service.GetAvailableCurrenciesAsync();
             if (!currencies.Success)
             {
                 return this.NotFound();
             }
+            List<CurrenciesViewModel> result = new List<CurrenciesViewModel>();
+            foreach (var currency in currencies.symbols)
+            {
+                var model = new CurrenciesViewModel
+                {
+                    Code = currency.Key,
+                    Name = currency.Value
+                };
+                result.Add(model);
+            }
 
-            return this.Ok(currencies.symbols);
+            return this.Ok(result);
         }
     }
 }

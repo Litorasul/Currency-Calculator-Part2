@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
+import { ICurrency } from '../interfaces/currency';
 import { IExchangeRate } from '../interfaces/exchangeRate';
 
 // API URL Parts
@@ -26,8 +27,8 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getCurrencies(): Observable<{}> {
-    return this.http.get<{}>(`${baseUrl}${currenciesUrl}`);
+  getCurrencies(): Observable<ICurrency[]> {
+    return this.http.get<ICurrency[]>(`${baseUrl}${currenciesUrl}`);
   }
 
   exchangeLatest(from: string, to: string, ammount: number): Observable<number> {

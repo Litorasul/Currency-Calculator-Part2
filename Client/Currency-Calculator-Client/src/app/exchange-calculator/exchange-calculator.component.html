@@ -1,0 +1,29 @@
+<div *ngIf="isLoading" class="container-loading">Loading...</div>
+<div *ngIf="!isLoading" class="container">
+    <div *ngIf="!choiseMade">
+        <button (click)="chooseLatest()">Latest Exchange Rate</button>
+        <button (click)="chooseHistorical()">Historical Exchange Rate</button>
+    </div>
+    <div *ngIf="choiseMade">
+        <div *ngIf="!isHistorical">
+            <form #f="ngForm" (ngSubmit)="exchangeLatest(f.value)">
+                <div>
+                    <label for="form">From currency: </label>
+                    <select #category="ngModel" name="from" id="from" ngModel required>
+                        <option *ngFor="let currency of availableCurrencies" value={{currency.code}}> 
+                            {{currency.name}}
+                        </option>
+                    </select>
+                    <p class="validation-message" *ngIf="category.touched && category.errors?.required">
+                        Please choose category.
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="isHistorical">
+            <form #f="ngForm" (ngSubmit)="exchangeHistorical(f.value)">
+
+            </form>
+        </div>
+    </div>
+</div>
