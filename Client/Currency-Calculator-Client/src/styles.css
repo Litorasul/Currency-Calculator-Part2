@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    background-color: #FFFBEC;
+}
+
+.container-loading {
+    font-size: 40px;
+    font-weight: 700;
+    width: fit-content;
+    margin: 50px auto;
+    color: rgba(40, 163, 126, 1);
+    height: 700px;
+}

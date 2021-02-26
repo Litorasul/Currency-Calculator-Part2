@@ -1,0 +1,72 @@
+.container {
+    width: 50%;
+    height: 53vh;
+    margin: 138px auto;
+}
+
+.form {
+    width: 100%;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    font-size: 35px;
+    color: rgba(40, 163, 126, 1);
+    margin-right: 10px;
+    padding: 20px 0;
+}
+
+input,
+select {
+    height: 50px;
+    width: 100%;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 5px;
+    border: none;
+    border-bottom: solid 3px black;
+    background-color: #FFFBEC;
+    color: #1E606D;
+}
+
+.validation-message {
+    color: rgba(205, 18, 24, 1);
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(40, 163, 126, 1);
+    color: #FFFBEC;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 18px 25px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgba(40, 163, 126, 0.5);
+}
+
+button:disabled {
+    cursor: no-drop;
+    background-color: rgba(40, 163, 126, 0.5);
+}
+
+.submit-btn {
+    width: fit-content;
+    margin: 30px 370px;
+    padding: 18px 45px;
+}
+
+.result {
+    font-size: 40px;
+    font-weight: 700;
+}

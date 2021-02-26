@@ -1,0 +1,43 @@
+.container {
+    width: 50%;
+    height: 53vh;
+    margin: 138px auto;
+}
+
+h1 {
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 60px;
+}
+
+.p-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(40, 163, 126, 1);
+    color: #FFFBEC;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 18px 25px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgba(40, 163, 126, 0.5);
+}

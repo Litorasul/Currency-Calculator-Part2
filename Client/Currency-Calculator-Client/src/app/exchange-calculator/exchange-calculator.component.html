@@ -1,12 +1,14 @@
 <div *ngIf="isLoading" class="container-loading">Loading...</div>
 <div *ngIf="!isLoading" class="container">
     <div *ngIf="!choiseMade">
-        <button (click)="chooseLatest()">Latest Exchange Rate</button>
-        <button (click)="chooseHistorical()">Historical Exchange Rate</button>
+        <div class="buttons">
+            <button (click)="chooseLatest()">Latest Exchange Rate</button>
+            <button (click)="chooseHistorical()">Historical Exchange Rate</button>
+        </div>
     </div>
     <div *ngIf="choiseMade">
         <div *ngIf="!isHistorical">
-            <form #f="ngForm" (ngSubmit)="exchangeLatest(f.value)">
+            <form class="form" #f="ngForm" (ngSubmit)="exchangeLatest(f.value)">
                 <div>
                     <label for="form">From currency: </label>
                     <select #fromCurrency="ngModel" name="from" id="from" ngModel required>
@@ -40,7 +42,7 @@
             </form>
         </div>
         <div *ngIf="isHistorical">
-            <form #f="ngForm" (ngSubmit)="exchangeHistorical(f.value)">
+            <form class="form" #f="ngForm" (ngSubmit)="exchangeHistorical(f.value)">
                 <div>
                     <label for="form">From currency: </label>
                     <select #fromCurrency="ngModel" name="from" id="from" ngModel required>
@@ -80,6 +82,6 @@
                 <button class="submit-btn" type="submit" [disabled]="f.invalid">Calculate</button>
             </form>
         </div>
-        <div>Result: {{result}}</div>
+        <div class="result">Result: {{result}}</div>
     </div>
 </div>

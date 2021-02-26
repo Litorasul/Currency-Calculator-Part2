@@ -9,13 +9,17 @@ import { ExchangeCalculatorComponent } from './exchange-calculator/exchange-calc
 
 import { ChartsModule} from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ExchangeCalculatorComponent,
-    ChartComponent
+    ChartComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

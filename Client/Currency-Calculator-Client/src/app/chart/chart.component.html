@@ -1,6 +1,6 @@
 <div *ngIf="isLoading" class="container-loading">Loading...</div>
 <div *ngIf="!isLoading" class="container">
-    <form #f="ngForm" (ngSubmit)="getChartData(f.value)">
+    <form class="form" #f="ngForm" (ngSubmit)="getChartData(f.value)">
         <div>
             <label for="code">Choose currency: </label>
             <select #fromCurrency="ngModel" name="code" id="code" ngModel required>
@@ -12,7 +12,7 @@
                 Please choose currency.
             </p>
         </div>
-        <button class="submit-btn" type="submit" [disabled]="f.invalid">Calculate</button>
+        <button class="submit-btn" type="submit" [disabled]="f.invalid">Chart</button>
     </form>
     <div *ngIf="initialized">
         <div class="chartjs-container">
