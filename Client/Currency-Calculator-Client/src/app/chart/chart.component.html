@@ -1,0 +1,23 @@
+<div *ngIf="isLoading" class="container-loading">Loading...</div>
+<div *ngIf="!isLoading" class="container">
+    <form #f="ngForm" (ngSubmit)="getChartData(f.value)">
+        <div>
+            <label for="code">Choose currency: </label>
+            <select #fromCurrency="ngModel" name="code" id="code" ngModel required>
+                <option *ngFor="let currency of availableCurrencies" value={{currency.code}}> 
+                    {{currency.name}}
+                </option>
+            </select>
+            <p class="validation-message" *ngIf="fromCurrency.touched && fromCurrency.errors?.required">
+                Please choose currency.
+            </p>
+        </div>
+        <button class="submit-btn" type="submit" [disabled]="f.invalid">Calculate</button>
+    </form>
+    <div *ngIf="initialized">
+        <div class="chartjs-container">
+            <canvas baseChart height="200" width="500" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [chartType]="lineChartType">
+            </canvas>
+        </div>
+    </div>
+</div>

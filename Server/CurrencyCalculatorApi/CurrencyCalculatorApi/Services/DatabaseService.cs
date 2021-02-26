@@ -26,7 +26,7 @@
                 {
                     Id = x.Id,
                     Rate = x.Rate,
-                    DateTime = x.DateTime
+                    DateTime = x.DateTime.ToString("dd MMM yyyy")
                 }).ToList();
 
             return rates;

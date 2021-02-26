@@ -7,17 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExchangeCalculatorComponent } from './exchange-calculator/exchange-calculator.component';
 
+import { ChartsModule} from 'ng2-charts';
+import { ChartComponent } from './chart/chart.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExchangeCalculatorComponent
+    ExchangeCalculatorComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
