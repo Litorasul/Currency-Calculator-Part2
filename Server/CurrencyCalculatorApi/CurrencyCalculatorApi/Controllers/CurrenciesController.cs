@@ -1,6 +1,4 @@
-﻿using CurrencyCalculatorApi.ViewModels;
-
-namespace CurrencyCalculatorApi.Controllers
+﻿namespace CurrencyCalculatorApi.Controllers
 {
     using System.Threading.Tasks;
     using System.Collections.Generic;
@@ -8,6 +6,7 @@ namespace CurrencyCalculatorApi.Controllers
     using Microsoft.AspNetCore.Mvc;
     
     using CurrencyCalculatorApi.Services;
+    using CurrencyCalculatorApi.ViewModels;
 
     [ApiController]
     [Route("/api/[controller]")]

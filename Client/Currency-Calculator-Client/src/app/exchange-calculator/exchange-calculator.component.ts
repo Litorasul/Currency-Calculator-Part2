@@ -10,6 +10,7 @@ import { ApiServiceService } from '../services/api-service.service';
 })
 export class ExchangeCalculatorComponent implements OnInit {
 
+  errorMessage = '';
   availableCurrencies: ICurrency[] = [];
   isLoading = false;
   choiseMade = false;
@@ -38,11 +39,31 @@ export class ExchangeCalculatorComponent implements OnInit {
   }
 
   exchangeLatest(formValue: IExchangeLatestDetails): void {
-
+    this.apiService.exchangeLatest(formValue.from, formValue.to, formValue.ammount).subscribe(
+      {
+        next: (res: number) => {
+          this.result = parseFloat(res.toFixed(2));
+        },
+        error: (err) => {
+          this.errorMessage = err.error.message;
+          window.alert(this.errorMessage);
+        }
+      }
+    );
   }
 
   exchangeHistorical(formValue: IExchangeHistoricalDetails): void {
-
+    this.apiService.exchangeHistorical(formValue.from, formValue.to, formValue.ammount, formValue.date).subscribe(
+      {
+        next: (res: number) => {
+          this.result = parseFloat(res.toFixed(2));
+        },
+        error: (err) => {
+          this.errorMessage = err.error.message;
+          window.alert(this.errorMessage);
+        }
+      }
+    );
   }
 
 }

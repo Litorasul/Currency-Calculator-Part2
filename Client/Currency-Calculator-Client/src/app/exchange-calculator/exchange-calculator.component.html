@@ -9,21 +9,77 @@
             <form #f="ngForm" (ngSubmit)="exchangeLatest(f.value)">
                 <div>
                     <label for="form">From currency: </label>
-                    <select #category="ngModel" name="from" id="from" ngModel required>
+                    <select #fromCurrency="ngModel" name="from" id="from" ngModel required>
                         <option *ngFor="let currency of availableCurrencies" value={{currency.code}}> 
                             {{currency.name}}
                         </option>
                     </select>
-                    <p class="validation-message" *ngIf="category.touched && category.errors?.required">
-                        Please choose category.
+                    <p class="validation-message" *ngIf="fromCurrency.touched && fromCurrency.errors?.required">
+                        Please choose currency.
                     </p>
                 </div>
+                <div>
+                    <label for="to">To currency: </label>
+                    <select #toCurrency="ngModel" name="to" id="to" ngModel required>
+                        <option *ngFor="let currency of availableCurrencies" value={{currency.code}}> 
+                            {{currency.name}}
+                        </option>
+                    </select>
+                    <p class="validation-message" *ngIf="toCurrency.touched && toCurrency.errors?.required">
+                        Please choose currency.
+                    </p>
+                </div>
+                <div>
+                    <label for="ammount">Ammount: </label>
+                    <input #money="ngModel" type="number" name="ammount" id="ammount" placeholder="Type ammount..." ngModel required>
+                    <p class="validation-message" *ngIf="money.touched && money.errors?.required">
+                        Ammount is required!
+                    </p>
+                </div>
+                <button class="submit-btn" type="submit" [disabled]="f.invalid">Calculate</button>
             </form>
         </div>
         <div *ngIf="isHistorical">
             <form #f="ngForm" (ngSubmit)="exchangeHistorical(f.value)">
-
+                <div>
+                    <label for="form">From currency: </label>
+                    <select #fromCurrency="ngModel" name="from" id="from" ngModel required>
+                        <option *ngFor="let currency of availableCurrencies" value={{currency.code}}> 
+                            {{currency.name}}
+                        </option>
+                    </select>
+                    <p class="validation-message" *ngIf="fromCurrency.touched && fromCurrency.errors?.required">
+                        Please choose currency.
+                    </p>
+                </div>
+                <div>
+                    <label for="to">To currency: </label>
+                    <select #toCurrency="ngModel" name="to" id="to" ngModel required>
+                        <option *ngFor="let currency of availableCurrencies" value={{currency.code}}> 
+                            {{currency.name}}
+                        </option>
+                    </select>
+                    <p class="validation-message" *ngIf="toCurrency.touched && toCurrency.errors?.required">
+                        Please choose currency.
+                    </p>
+                </div>
+                <div>
+                    <label for="ammount">Ammount: </label>
+                    <input #money="ngModel" type="number" name="ammount" id="ammount" placeholder="Type ammount..." ngModel required>
+                    <p class="validation-message" *ngIf="money.touched && money.errors?.required">
+                        Ammount is required!
+                    </p>
+                </div>
+                <div>
+                    <label for="date">Date: </label>
+                    <input #onDate="ngModel" type="date" name="date" id="date" placeholder="Choode date..." ngModel required>
+                    <p class="validation-message" *ngIf="onDate.touched && onDate.errors?.required">
+                        Date is required!
+                    </p>
+                </div>
+                <button class="submit-btn" type="submit" [disabled]="f.invalid">Calculate</button>
             </form>
         </div>
+        <div>Result: {{result}}</div>
     </div>
 </div>

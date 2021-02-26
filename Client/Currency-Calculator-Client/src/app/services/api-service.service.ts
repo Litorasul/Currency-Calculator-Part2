@@ -33,12 +33,12 @@ export class ApiServiceService {
 
   exchangeLatest(from: string, to: string, ammount: number): Observable<number> {
     return this.http.get<number>
-    (`${baseUrl}${exchangeUrl}${latestUrl}${fromCurrencyUrl}${from}${toCurrencyUrl}${toCurrencyUrl}${ammountUrl}${ammount}`);
+    (`${baseUrl}${exchangeUrl}${latestUrl}${fromCurrencyUrl}${from}${toCurrencyUrl}${to}${ammountUrl}${ammount}`);
   }
 
   exchangeHistorical(from: string, to: string, ammount: number, date: string): Observable<number> {
     return this.http.get<number>
-    (`${baseUrl}${exchangeUrl}${historicalUrl}${fromCurrencyUrl}${from}${toCurrencyUrl}${toCurrencyUrl}${ammountUrl}${ammount}${dateUrl}${date}`);
+    (`${baseUrl}${exchangeUrl}${historicalUrl}${fromCurrencyUrl}${from}${toCurrencyUrl}${to}${ammountUrl}${ammount}${dateUrl}${date}`);
   }
 
   getExchangeRatesPerCurrency(currency: string): Observable<IExchangeRate[]> {

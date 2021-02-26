@@ -8,5 +8,5 @@ export interface IExchangeHistoricalDetails {
     from: string;
     to: string;
     ammount: number;
-    date: Date;
+    date: string;
 }
