@@ -37,7 +37,7 @@
             return currencies;
         }
 
-        public async Task<FixerExchangeRateDto> GetLatestRateForEuroAsync()
+        public virtual async Task<FixerExchangeRateDto> GetLatestRateForEuroAsync()
         {
             var path = $"{BASE_URL}{LATEST_URL}{KEY_URL}{KEY}";
 
@@ -54,7 +54,7 @@
             return rate;
         }
 
-        public async Task<FixerExchangeRateDto> GetHistoricalRateForEuroAsync(string date)
+        public virtual async Task<FixerExchangeRateDto> GetHistoricalRateForEuroAsync(string date)
         {
             var path = $"{BASE_URL}{date}{KEY_URL}{KEY}";
 

@@ -43,7 +43,7 @@
             await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<int> CreateExchangeRateAsync(string currencyCode, decimal rate, DateTime date)
+        public virtual async Task<int> CreateExchangeRateAsync(string currencyCode, decimal rate, DateTime date)
         {
             var currency = this.dbContext.Currencies.FirstOrDefault(x => x.Code == currencyCode);
             if (currency == null)
