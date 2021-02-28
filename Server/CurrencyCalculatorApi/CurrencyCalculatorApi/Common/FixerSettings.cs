@@ -1,7 +1,7 @@
 ﻿namespace CurrencyCalculatorApi.Common
 {
-    public class FixerSettings
+    public static class FixerSettings
     {
-        public string ApiKey { get; set; }
+        public const string KEY = "Your API Access Key";
     }
 }
