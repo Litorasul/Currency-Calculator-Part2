@@ -3,7 +3,7 @@
 A simple Currency Calculator with the opportunity to check the latest or historical exchange rates according to fixer.io.
 It also retrieves the latest exchange rates onse a day and saves it in a SQL Server Database and gives the user the option to check how an exchange rate for any currency to Euro develop for a time period with a Linear Chart.
 
-###The project consists of two parts:
+### The project consists of two parts:
 1. ASP.NET Core 5 Web API Server
 2. Angular 11.0.1 Web Client
 
